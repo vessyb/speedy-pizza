@@ -1,0 +1,1 @@
+drop table SPEEDYPIZZA_INGREDIENT__U98767 if exists cascade ;

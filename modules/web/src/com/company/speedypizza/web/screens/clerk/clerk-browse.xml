@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="clerksTable"
+        messagesPack="com.company.speedypizza.web.screens.clerk">
+    <data readOnly="true">
+        <collection id="clerksDc"
+                    class="com.company.speedypizza.entity.Clerk"
+                    view="clerk-view">
+            <loader id="clerksDl">
+                <query>
+                    <![CDATA[select e from speedypizza_Clerk e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="clerksTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="clerksTable"
+                dataLoader="clerksDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="clerksTable"
+                    width="100%"
+                    dataContainer="clerksDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="username"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="clerksTable.create"/>
+                <button id="editBtn" action="clerksTable.edit"/>
+                <button id="removeBtn" action="clerksTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

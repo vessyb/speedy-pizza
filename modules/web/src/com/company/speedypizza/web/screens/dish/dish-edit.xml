@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.speedypizza.web.screens.dish">
+    <data>
+        <instance id="dishDc"
+                  class="com.company.speedypizza.entity.Dish"
+                  view="dish-view">
+            <loader/>
+            <instance id="photoDc" property="photo"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="dishDc">
+            <column width="250px">
+                <pickerField id="dishTypeField" property="dishType">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="nameField" property="name"/>
+                <upload id="photoField" fileStoragePutMode="IMMEDIATE" property="photo" showFileName="true"/>
+                <textField id="ingredients" property="ingredients"/>
+                <textField id="priceField" property="price"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
