@@ -35,7 +35,8 @@ public class Order extends StandardEntity {
     @Column(name = "DATE_", nullable = false)
     protected Date date;
 
-    @OneToMany(mappedBy = "order")
+    @JoinTable(name = "SPEEDYPIZZA_ORDER_DISH_LINK", joinColumns = @JoinColumn(name = "ORDER_ID"), inverseJoinColumns = @JoinColumn(name = "DISH_ID"))
+    @ManyToMany
     protected List<Dish> dishes;
 
     @ManyToOne(fetch = FetchType.LAZY)

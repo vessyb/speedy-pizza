@@ -9,14 +9,6 @@
                   view="customer-view">
             <loader/>
         </instance>
-        <collection id="ordersDc" class="com.company.speedypizza.entity.Order"
-                    view="order-view">
-            <loader id="ordersDl">
-                <query>
-                    <![CDATA[select e from speedypizza_Order e where e.customer = :customer]]>
-                </query>
-            </loader>
-        </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
@@ -41,11 +33,12 @@
                    width="650px">
                 <columns>
                     <column id="number"/>
+                    <column id="dishes"/>
                     <column id="instructions"/>
                     <column id="deliveryTime"/>
                     <column id="total"/>
-                    <column id="date"/>
                     <column id="customer"/>
+                    <column id="date"/>
                 </columns>
                 <rows/>
             </table>

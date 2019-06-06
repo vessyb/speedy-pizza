@@ -53,7 +53,6 @@ create table SPEEDYPIZZA_DISH (
     PRICE decimal(19, 2) not null,
     PHOTO_ID varchar(36) not null,
     DISH_TYPE_ID varchar(36) not null,
-    ORDER_ID varchar(36),
     INGREDIENTS varchar(255) not null,
     --
     primary key (ID)
@@ -91,3 +90,10 @@ create table SPEEDYPIZZA_DISH_TYPE (
     primary key (ID)
 )^
 -- end SPEEDYPIZZA_DISH_TYPE
+-- begin SPEEDYPIZZA_ORDER_DISH_LINK
+create table SPEEDYPIZZA_ORDER_DISH_LINK (
+    DISH_ID varchar(36) not null,
+    ORDER_ID varchar(36) not null,
+    primary key (DISH_ID, ORDER_ID)
+)^
+-- end SPEEDYPIZZA_ORDER_DISH_LINK

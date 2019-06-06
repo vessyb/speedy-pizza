@@ -4,12 +4,15 @@ import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Lookup;
+import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @NamePattern("%s|name")
 @Table(name = "SPEEDYPIZZA_DISH")
@@ -32,18 +35,29 @@ public class Dish extends StandardEntity {
     @JoinColumn(name = "PHOTO_ID")
     protected FileDescriptor photo;
 
+    @Lookup(type = LookupType.DROPDOWN, actions = {"lookup"})
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "DISH_TYPE_ID")
     protected DishType dishType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORDER_ID")
-    protected Order order;
-
     @NotNull
     @Column(name = "INGREDIENTS", nullable = false)
     protected String ingredients;
+
+    @JoinTable(name = "SPEEDYPIZZA_ORDER_DISH_LINK",
+            joinColumns = @JoinColumn(name = "DISH_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ORDER_ID"))
+    @ManyToMany
+    protected List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public String getIngredients() {
         return ingredients;
@@ -51,14 +65,6 @@ public class Dish extends StandardEntity {
 
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
     }
 
     public DishType getDishType() {

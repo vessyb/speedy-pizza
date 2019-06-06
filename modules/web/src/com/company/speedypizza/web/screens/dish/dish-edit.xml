@@ -10,24 +10,40 @@
             <loader/>
             <instance id="photoDc" property="photo"/>
         </instance>
+        <collection id="dishTypesDc" class="com.company.speedypizza.entity.DishType" view="_minimal">
+            <loader id="dishTypesLc">
+                <query>
+                    <![CDATA[select e from speedypizza_DishType e]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="dishDc">
             <column width="250px">
-                <pickerField id="dishTypeField" property="dishType">
+                <lookupPickerField id="dishTypeField" property="dishType">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
                     </actions>
-                </pickerField>
+                </lookupPickerField>
                 <textField id="nameField" property="name"/>
                 <upload id="photoField" fileStoragePutMode="IMMEDIATE" property="photo" showFileName="true"/>
                 <textField id="ingredients" property="ingredients"/>
                 <textField id="priceField" property="price"/>
             </column>
         </form>
+        <groupBox spacing="true" align="TOP_RIGHT">
+            <image id="dishPhoto" property="photo" height="250px" width="250px"/>
+            <buttonsPanel>
+                <upload id="uploadField"/>
+                <button id="downloadImageBtn"
+                        caption="download"/>
+                <button id="clearImageBtn"
+                        caption="clear"/>
+            </buttonsPanel>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

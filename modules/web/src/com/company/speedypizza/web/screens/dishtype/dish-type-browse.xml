@@ -40,6 +40,7 @@
                 <button id="createBtn" action="dishTypesTable.create"/>
                 <button id="editBtn" action="dishTypesTable.edit"/>
                 <button id="removeBtn" action="dishTypesTable.remove"/>
+                <button id="printTypes" caption="Print Dish Types"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

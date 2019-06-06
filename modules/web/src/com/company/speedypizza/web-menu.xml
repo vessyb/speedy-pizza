@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
-    <menu id="speedyPizza" insertBefore="administration">
+    <menu id="speedyPizza" insertBefore="reports">
         <item screen="speedypizza_Clerk.browse"/>
         <item screen="speedypizza_Customer.browse"/>
-        <item screen="speedypizza_Dish.browse"/>
         <item screen="speedypizza_DishType.browse"/>
         <item screen="speedypizza_Order.browse"/>
+        <menu id="dishes-menu">
+            <item screen="speedypizza_Dish.browse"/>
+            <item screen="speedypizza_OrderedDishesScreen"/>
+        </menu>
     </menu>
 </menu-config>
