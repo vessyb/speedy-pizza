@@ -33,6 +33,7 @@
             </actions>
             <columns>
                 <column id="number"/>
+                <column id="dishes"/>
                 <column id="instructions"/>
                 <column id="deliveryTime"/>
                 <column id="total"/>

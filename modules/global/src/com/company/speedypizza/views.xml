@@ -13,12 +13,9 @@
         <property name="dishType" view="_minimal"/>
     </view>
     <view entity="speedypizza_Order" name="order-view" extends="_local">
-        <property name="dishes" view="_minimal">
-            <property name="price"/>
-        </property>
+        <property name="dishes" view="_minimal"/>
         <property name="customer" view="_minimal">
             <property name="phoneNumber"/>
-            <property name="discount"/>
             <property name="address"/>
         </property>
     </view>

@@ -43,6 +43,17 @@ public class Order extends StandardEntity {
     @JoinColumn(name = "CUSTOMER_ID")
     protected Customer customer;
 
+    @Column(name = "DISCOUNT")
+    protected BigDecimal discount;
+
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
+    }
+
     public Customer getCustomer() {
         return customer;
     }

@@ -15,6 +15,7 @@ create table SPEEDYPIZZA_ORDER (
     TOTAL decimal(19, 2) not null,
     DATE_ date not null,
     CUSTOMER_ID varchar(36),
+    DISCOUNT decimal(19, 2),
     --
     primary key (ID)
 )^

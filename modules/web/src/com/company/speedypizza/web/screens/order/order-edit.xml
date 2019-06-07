@@ -16,7 +16,7 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="orderDc">
             <column width="250px">
-                <textField id="numberField" property="number"/>
+                <textField id="numberField" property="number" editable="false"/>
                 <textField id="instructionsField" property="instructions"/>
                 <textField id="deliveryTimeField" property="deliveryTime"/>
                 <textField id="totalField" property="total" editable="false"/>

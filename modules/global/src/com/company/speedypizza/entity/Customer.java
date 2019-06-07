@@ -9,6 +9,7 @@ import com.haulmont.cuba.security.entity.User;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @NamePattern("%s|username")
 @Table(name = "SPEEDYPIZZA_CUSTOMER")
@@ -32,6 +33,17 @@ public class Customer extends StandardEntity {
     @NotNull
     @Column(name = "ADDRESS", nullable = false)
     protected String address;
+
+    @OneToMany(mappedBy = "customer")
+    protected List<Order> orders;
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public String getAddress() {
         return address;

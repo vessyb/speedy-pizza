@@ -36,6 +36,8 @@ public class OrderEdit extends StandardEditor<Order> {
     @Subscribe(id = "dishesDc", target = Target.DATA_CONTAINER)
     private void onDishesDcCollectionChange(CollectionContainer.CollectionChangeEvent<Dish> event) {
         if(event.getChangeType()!= CollectionChangeType.REFRESH){
+            orderService.calculateOrderDiscount(getEditedEntity());
+            orderService.calculateCustomerDiscount(getEditedEntity().getCustomer());
             BigDecimal amount = orderService.calculateAmount(getEditedEntity());
             getEditedEntity().setTotal(amount);
         }
